@@ -41,11 +41,11 @@ CREATE TABLE funders(
 
 INSERT INTO category(name,description)
 VALUES
-("category 1", "description 1"),
-("category 2", "description 2"),
-("category 3", "description 3"),
-("category 4", "description 4"),
-("category 5", "description 5");
+("Theoretical Research", "description 1"),
+("Experimental Research", "description 2"),
+("Qualitative Research", "description 3"),
+("Descriptive Research", "description 4"),
+("Applied Research", "description 5");
 
 
 INSERT INTO product(product_name, product_price, owner_id , is_completed ,category_id)
