@@ -35,10 +35,10 @@ public class ProductController {
 		
 		boolean isCompleted = (boolean) productData.get("isCompleted");
 		
-		Long categoryIdTemp = new Long((long) productData.get("categoryId"));
-		int categoryId = categoryIdTemp.intValue();
+		//Long categoryIdTemp = new Long((long) productData.get("categoryId"));
+		//int categoryId = categoryIdTemp.intValue();
 		
-		product = new Product(productName, productPrice, ownerId, isCompleted, categoryId);
+		product = new Product(productName, productPrice, ownerId, isCompleted);
 		
 		return productService.addProduct(product);
 	}
@@ -56,7 +56,10 @@ public class ProductController {
 		Long ownerIdTemp = new Long((long) productData.get("ownerId"));
 		int ownerId = ownerIdTemp.intValue();
 		
-		Boolean completed = (Boolean) productData.get("completed");
+		Long catIdTemp = new Long((long) productData.get("categoryId"));
+		int catId = catIdTemp.intValue();
+		
+		//Boolean completed = (Boolean) productData.get("completed");
 		
 
 		product = new Product();
@@ -64,7 +67,8 @@ public class ProductController {
 		product.setProductName(productName);
 		product.setProductPrice(productPrice);
 		product.setOwnerId(ownerId);
-		product.setCompleted(completed);
+		product.setCategoryId(catId);
+		//product.setCompleted(completed);
 		return productService.updateProduct(product);
 
 	}

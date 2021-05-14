@@ -22,7 +22,7 @@ function getData() {
           <td>${data.productPrice}</td>
           <td>${data.ownerId}</td>
 		  <td>${data.completed}</td>
-		  
+		  <td>${data.categoryId}</td>
           <td style="display: flex; flex-direction: row; align-itmes: center">
             <button
               id="${data.id}"
@@ -53,7 +53,7 @@ function getData() {
 }
 getData();
 
-//delete
+//delete Product
 $(document).on("click", ".btnRemove", (event) => {
   const deleteId = event.target.id;
   const target = event.target;
@@ -83,26 +83,18 @@ $(document).on("click", ".btnRemove", (event) => {
 });
 
 
-//update
+//update Product
 $(document).on("click", ".update", (event) => {
   event.preventDefault();
 
   const target = event.target;
   const id = $("#id").val();
   const name = $("#pname").val();
-  const price = Number.parseDouble($("#pprice").val());
+  const price = Number.parseFloat($("#pprice").val());
   const ownerid =  Number.parseInt($("#selectOwnerid").val()); 
-  const status = false;
+  const catid = Number.parseInt($("#cid").val()); 
+  //const status1 = Boolean.parseBoolean($("#selectstat").val());
 
-  const stat = document.getElementByName("st")[0].value;
-
-	if (stat.value == "completed"){
-		status = true;
-	}
-
-	else{
-		 status =false;
-	}
  
 
   target.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Wait`;
@@ -114,7 +106,7 @@ $(document).on("click", ".update", (event) => {
       productName: name,
       productPrice: price,
       ownerId: ownerid,
-      completed: status,
+	  categoryId :catid
     }),
     contentType: "application/json",
     dataType: "json",
@@ -138,47 +130,33 @@ $(document).on("click", ".update", (event) => {
   });
 });
 
-//update initialize
+//update in rows
 $(document).on("click", ".btnUpdate", (event) => {
   const targetParent = event.target.parentNode.parentNode.children;
   const id = targetParent[0].innerHTML;
   const name = targetParent[1].innerHTML;
   const price = targetParent[2].innerHTML;
   const ownerid = targetParent[3].innerHTML;
-  const status = targetParent[4].innerHTML;
+  const catid = targetParent[5].innerHTML;
 
   $("#id").val(id);
   $("#pname").val(name);
   $("#pprice").val(price);
   $("#selectOwnerid").val(ownerid);
-  
-if (status == true){
- 	$("#selectstat").val(1);
-  }
-else{
-	$("#selectstat").val(2);
-}
+  $("#cid").val(catid);
+
 });
 
 
 
-//insert
+//insert Products
 $(document).on("click", ".submit", (event) => {
   event.preventDefault();
   const target = event.target;
   const name = $("#pname").val();
   const price = Number.parseDouble($("#pprice").val());
   const ownerid =  Number.parseInt($("#selectOwnerid").val()); 
-  const status = 0;
-
-
-	if( ($("#selectstat :selected").text() )  == 'Completed'){
-		 status = 1;
-	}
-	
-	else{
-		 status =0;
-	}
+  const status1 = Boolean.parseBoolean($("#selectstat").val());
 
   target.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Wait`;
 
@@ -186,10 +164,10 @@ $(document).on("click", ".submit", (event) => {
     url: `http://localhost:${PORT}/ProductService/api/v2/product/addproduct`,
     type: "POST",
     data: JSON.stringify({
-      product_name: name,
-      product_price: price,
-      owner_id: ownerid,
-      is_completed: status,
+      productName: name,
+      productPrice: price,
+      ownerId: ownerid,
+      isCompleted: status1,
     }),
     contentType: "application/json",
     dataType: "json",

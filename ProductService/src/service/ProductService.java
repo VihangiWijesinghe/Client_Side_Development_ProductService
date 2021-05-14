@@ -396,13 +396,14 @@ public class ProductService {
 		        .entity("DataBase connectivity Error")
 		        .build();
 		  
-		  String query = "UPDATE product SET product_name=?, product_price=?, owner_id = ?, is_completed = ?, updated_at=CURRENT_TIMESTAMP WHERE id=?";
+		  String query = "UPDATE product SET product_name=?, product_price=?, owner_id = ?,category_id=?, updated_at=CURRENT_TIMESTAMP WHERE id=?";
 		  PreparedStatement preparedStmt = con.prepareStatement(query);
 		 
 		  preparedStmt.setString(1, product.getProductName());
 		  preparedStmt.setDouble(2, product.getProductPrice());
 		  preparedStmt.setInt(3,product.getOwnerId());
-		  preparedStmt.setBoolean(4, product.isCompleted());
+		  preparedStmt.setInt(4,product.getCategoryId());
+		  //preparedStmt.setBoolean(4, product.isCompleted());
 		  
 		  preparedStmt.setInt(5,product.getId());
 		  product.setCreated_at("few seconds ago");

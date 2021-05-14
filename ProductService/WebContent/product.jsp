@@ -66,19 +66,18 @@
     						
  						 </div>
  						 
- 						 <div class="form-group">
-    						<label for="Selectstatus"> Status:</label>
-    						<select class="form-control" id="selectstat" name="st">
-      							<option value = "completed">Completed</option>
-      							<option alue = "Not completed">Not Completed</option>
-      						</select> 
-      					</div> <br>
+ 						 <div class = "form-group">
+							<label for="catid">Category Id : </label> <br>
+							<input id = "cid" name= "cid" type = "text" class="form-control" placeholder="Enter Category Id" ><br>
+						</div>
+ 						 
+ 						  <br>
       					
       					
       					<br>
       					
-      					<button class="btn btn-primary submit">Submit</button>
-      					<button class="btn btn-primary update">Update</button>
+      					<button class="btn btn-primary btnsv submit">Submit</button>
+      					<button class="btn btn-primary btnsv update" >Update</button>
       					
       					
       					<br><br>
@@ -111,6 +110,7 @@
 	      <th scope="col">Price</th>
 	      <th scope="col">Owner Id</th>
 	      <th scope="col">Status</th>
+	      <th scope="col">Category Id</th>
 	      </tr>
 	      </thead>
 	      <tbody id="product_table">

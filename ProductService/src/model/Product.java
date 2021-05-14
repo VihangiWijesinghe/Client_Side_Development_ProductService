@@ -7,7 +7,7 @@ import repository.DBConnection;
 
 public class Product {
 	
-	private DBConnection connection = new DBConnection();
+	
 	
 	private int id;
 	private String productName;
@@ -30,6 +30,15 @@ public class Product {
 		this.ownerId = ownerId;
 		this.isCompleted = isCompleted;
 		this.categoryId = categoryId;
+	}
+	
+
+	public Product(String productName, double productPrice, int ownerId, boolean isCompleted) {
+		super();
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.ownerId = ownerId;
+		this.isCompleted = isCompleted;
 	}
 
 	public int getBuyerId() {
@@ -111,7 +120,7 @@ public class Product {
 				+ ", categoryId=" + categoryId + "]";
 	}
 	
-public String ReadTabProducts() {
+/*public String ReadTabProducts() {
 		
 		
 		String output = "";
@@ -175,5 +184,5 @@ public String ReadTabProducts() {
 	    }
 		return output;
 
-	}
+	}*/
 }
