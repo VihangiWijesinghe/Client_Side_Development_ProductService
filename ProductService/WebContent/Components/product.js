@@ -154,9 +154,9 @@ $(document).on("click", ".submit", (event) => {
   event.preventDefault();
   const target = event.target;
   const name = $("#pname").val();
-  const price = Number.parseDouble($("#pprice").val());
+  const price = Number.parseFloat($("#pprice").val());
   const ownerid =  Number.parseInt($("#selectOwnerid").val()); 
-  const status1 = Boolean.parseBoolean($("#selectstat").val());
+  const catid = Number.parseInt($("#cid").val()); 
 
   target.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Wait`;
 
@@ -167,7 +167,7 @@ $(document).on("click", ".submit", (event) => {
       productName: name,
       productPrice: price,
       ownerId: ownerid,
-      isCompleted: status1,
+      categoryId :catid
     }),
     contentType: "application/json",
     dataType: "json",
@@ -176,7 +176,7 @@ $(document).on("click", ".submit", (event) => {
         productName: name,
       productPrice: price,
       ownerId: ownerid,
-      completed: status,
+      categoryId :catid
       };
       onItemSaveComplete(response, status, newlyAddedItems, target);
     },
@@ -194,10 +194,10 @@ function onItemSaveComplete(response, status, newlyAddedItems, target) {
       output +
       `<tr>
       <td>${Number.parseInt(Math.random() * 100)}</td>
-      <td>${newlyAddedItems.product_name}</td>
-      <td>${newlyAddedItems.product_price}</td>
-      <td>${newlyAddedItems.owner_id}</td>
-	<td>${newlyAddedItems.is_completed}</td>
+      <td>${newlyAddedItems.productName}</td>
+      <td>${newlyAddedItems.productPrice}</td>
+      <td>${newlyAddedItems.ownerId}</td>
+	  <td>${newlyAddedItems.categoryId}</td>
       <td style="display: flex; flex-direction: row; align-itmes: center">
         <button
           type="button"

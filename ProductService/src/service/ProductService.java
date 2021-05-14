@@ -33,14 +33,13 @@ public class ProductService {
 		        .entity("DataBase connectivity Error")
 		        .build();
 
-		      String query = "INSERT INTO product(product_name,product_price,owner_id,is_completed) VALUES (?, ?, ?, ?)";
+		      String query = "INSERT INTO product(product_name,product_price,owner_id,category_id) VALUES (?, ?, ?, ?)";
 		      PreparedStatement preparedStmt = con.prepareStatement(query);
 
 		      preparedStmt.setString(1, product.getProductName());
 		      preparedStmt.setDouble(2, product.getProductPrice());
 		      preparedStmt.setInt(3, product.getOwnerId());
-		      preparedStmt.setBoolean(4, product.isCompleted());
-		      //preparedStmt.setInt(5, product.getCategoryId());
+		     preparedStmt.setInt(4, product.getCategoryId());
 		      
 		      preparedStmt.execute();
 		      con.close();

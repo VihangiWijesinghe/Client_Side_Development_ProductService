@@ -33,12 +33,12 @@ public class ProductController {
 		Long ownerIdTemp = new Long((long) productData.get("ownerId"));
 		int ownerId = ownerIdTemp.intValue();
 		
-		boolean isCompleted = (boolean) productData.get("isCompleted");
+		Long catIdTemp = new Long((long) productData.get("categoryId"));
+		int catId = catIdTemp.intValue();
 		
-		//Long categoryIdTemp = new Long((long) productData.get("categoryId"));
-		//int categoryId = categoryIdTemp.intValue();
 		
-		product = new Product(productName, productPrice, ownerId, isCompleted);
+		
+		product = new Product(productName, productPrice, ownerId, catId);
 		
 		return productService.addProduct(product);
 	}

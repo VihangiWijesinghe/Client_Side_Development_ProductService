@@ -23,6 +23,16 @@ public class Product {
 		super();
 	}
 
+	
+	public Product(String productName, double productPrice, int ownerId, int categoryId) {
+		super();
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.ownerId = ownerId;
+		this.categoryId = categoryId;
+	}
+
+
 	public Product(String productName, double productPrice, int ownerId, boolean isCompleted, int categoryId) {
 		super();
 		this.productName = productName;
